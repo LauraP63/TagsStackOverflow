@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>API Tags Stackoverflow</title>
+  
+</head>
+
+<body>
+  <div class="banniere"><img src="static/stack.png"></div>
+    <center>
+    <form method="POST">
+        <label>Title :  </label>
+        <input name="title"><br>
+        <label for="message">Question : <textarea name="message"></textarea></label>
+        <input type="submit">
+    </form>
+  
+ <h3>Tags suggérés</h3>
+ <p>{{ tags_predits }}</p>
+</center>
+</body>
+</html>
