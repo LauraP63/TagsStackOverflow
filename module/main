@@ -1,0 +1,20 @@
+def clean_data(texte = ""):
+    """
+        Nettoie le texte passé en paramètres : extraction de la balise pre, 
+        suppression des parties de code, des url, du html, des carac non ascii,
+        de la ponctuation et des chiffres. Passage en minuscules de tous les mots.
+        param text : le texte à nettoyer
+        return : le texte nettoyé (sous forme de string)
+    """
+   
+    word_clean = extract_pre(texte)
+    word_clean = remove_code(word_clean)
+    word_clean = remove_URL(word_clean)
+    word_clean = remove_html(word_clean)
+    word_clean = remove_non_ascii(word_clean)
+    word_clean = remove_punct(word_clean)
+    word_clean = remove_digit(word_clean)
+    word_clean = word_clean.lower()
+ 
+    clean_texte = ' '.join(word_clean)
+    return word_clean
