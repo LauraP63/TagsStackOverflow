@@ -9,19 +9,21 @@
   <title>API Tags Stackoverflow</title>
   
 </head>
+<div class="banniere"><img src="static/stack.png"></div>
 
 <body>
-  <div class="banniere"><img src="static/stack.png"></div>
+  
     <center>
+      <h3>Tags suggérés</h3>
+ <h3 id="tagsPredits">{{ tags_predits }}</h3>
     <form method="POST">
         <label>Title :  </label>
-        <input name="title"><br>
-        <label for="message">Question : <textarea name="message"></textarea></label>
+        <input name="title" value="{{ request.form['title'] }}"><br>
+        <label for="message">Question : <textarea name="message">{{request.form['message']}}</textarea></label>
         <input type="submit">
     </form>
   
- <h3>Tags suggérés</h3>
- <p>{{ tags_predits }}</p>
+ 
 </center>
 </body>
 </html>

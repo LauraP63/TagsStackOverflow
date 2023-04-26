@@ -23,19 +23,12 @@ def read_file(folder_path, file_name):
 model = read_file("models/", "pipeline_tfidf_pac")
 
 
-
-
-
 #chargement du modèle et du vectorizer
-
-
 mlb = pd.read_pickle('models/multibinarizer')
-
 
 #définition du schéma/point de terminaison (API)
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    
    request_type_str = request.method
    if request_type_str == 'GET' :
       return render_template('index.html')
@@ -43,17 +36,11 @@ def home():
       # récupération des infos envoyées par l'utilisateur
       message = request.form['message']
       title = request.form['title']
-
-
       question =  concatenation(message, title, 5)
-     
       predictions = model.predict([question])
-        
       tags = mlb.inverse_transform(predictions)
- 
+      tags = [''.join(c for c in s if c not in string.punctuation) for s in tags]
       return render_template('index.html', tags_predits= tags)
    
-
 if __name__ == "__main__":
     app.run(debug=True)
-
