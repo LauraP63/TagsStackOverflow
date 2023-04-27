@@ -39,7 +39,7 @@ def home():
       question =  concatenation(message, title, 5)
       predictions = model.predict([question])
       tags = mlb.inverse_transform(predictions)
-      tags = [''.join(c for c in s if c not in string.punctuation) for s in tags]
+      tags = [' '.join(c for c in s if c not in string.punctuation) for s in tags]
       return render_template('index.html', tags_predits= tags)
    
 if __name__ == "__main__":
